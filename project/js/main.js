@@ -13,13 +13,13 @@ const renderProduct = (title, price) => {
               </div>`;
 };
 
-const renderProducts = (list) => {
-    const productList = list.map((good) => {
-        return renderProduct(good.title, good.price);
-    });
-    document.querySelector('.products').innerHTML = productList;
-
-    console.log(productList);
+const renderProducts = list => {
+    document.querySelector('.products').innerHTML = list.map((good) => renderProduct(good.title, good.price)).join('');
+    // document.querySelector('.products').innerHTML = productList;
+    // console.log(productList);
+    // запятая была из-за метода .map. 
+    // Он возвращает массив, который потом для вывода в строку пропускается через toString, 
+    // который в свою очередь и добавляет запятые
 };
 
 renderProducts(products);
